@@ -1,0 +1,19 @@
+{
+  "name": "init",
+  "version": "1.0.0",
+  "main": "webstorm_test.js",
+  "dependencies": {"express":"^4.15.2"
+                  , "multer" : "^1.3.0"
+                  , "body-parser" : "^1.17.1"
+                  ,"mime": "^1.3.4"
+                  ,"mongodb":"^2.2.25"
+                  ,"mongoose": "^4.9.4"
+                  ,"cookie-parser": "^1.4.3"},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
