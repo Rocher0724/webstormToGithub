@@ -4,16 +4,13 @@ var fs = require('fs');
 var express = require('express');
 var multer = require('multer');
 var bodyParser = require('body-parser');
-
 var _storage = multer.diskStorage({
     destination: function (req, file, cb) {
         // cb(null, 'c://workspaces/node_webstorm/uploads/')
         cb(null, 'uploads/')
-
     }, 
     filename: function (req, file, cb) {
         cb(null, file.originalname);
-
     }
 });
 var upload = multer({ storage: _storage });
@@ -32,15 +29,8 @@ app.use('/user', express.static('uploads'));
 
 // -------------------------------------- 웹 테스트용 ----
 app.get("/hello", (req, res) => {
-    fs.readFile('hello.html', 'utf-8', (error, data) => {
-        if (error) {
-            res.writeHead(500, { 'Content-Type': 'text/html' });
-            res.end('500 Internal Server Error : ' + error);
-        } else {
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(data);
-        }
-    });
+    name(); // 파일 삭제메소드
+    send200(res,'1','text/html');
 });
 
 // -------------------------------------------------------
@@ -137,6 +127,8 @@ function createData(response, data){
         }
     });
 }
+
+// 이미지 파일 위치를 db에 집어넣는작업
 var iTitle = 'x';
 var iContent = 'x';
 function imageAddressInsert(title, content, imageaddress){
@@ -192,7 +184,30 @@ function imageAddressInsert(title, content, imageaddress){
                 iContent = null;
             }
         });
-
     }
+}
+
+
+
+// 삭제하는법. 지금 이 파일에서 루트가 node_webstorm/study_android/ 이기 때문에 아래와 같이 사진폴더/사진명 만 적어주면 된다.
+function name() {
+    var stringg = 'asd';
+    fs.unlinkSync("uploads/123.png");
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

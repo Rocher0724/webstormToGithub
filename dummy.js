@@ -1,3 +1,6 @@
+/**
+ * Created by myPC on 2017-04-15.
+ */
 var http = require('http');
 var url = require('url');
 var fs = require('fs');
@@ -82,7 +85,7 @@ app.post('/upload', upload.single('userfile'), (req, res) => {
 app.post('/singin', (req,res) => {
     console.log('로그인 들어왔당');
     var data = '{"key": "4709a4a4174835ac846294f06f6486be9c02b20b"}';
-   send200(res, data, 'text/html');
+    send200(res, data, 'text/html');
 });
 
 
@@ -92,6 +95,14 @@ http.createServer(app).listen(80, () => {
 // 3. 동기방식의 파일읽기. 파일을 읽은 후 data 변수에 저장
 // var data = fs.readFileSync('server.js', 'utf-8');
 // console.log('02 readSync: %s',data);
+
+
+app.post("/asdasd",(req,res)=>{
+    var postdata = req.body;
+    console.log(postdata);
+    send200(res, postdata, 'text/html');
+});
+
 
 function readAll(response) {
     var data = '';
@@ -118,7 +129,7 @@ function send404(response) {
 function send200(response, data, mimeType) {
     console.log('send200입니다 ' + data);
     response.writeHead(200, { 'Content-Type': mimeType });
-    response.end(data);
+    response.end();
 }
 
 function send500(response) {

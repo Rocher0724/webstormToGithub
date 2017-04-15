@@ -5,7 +5,7 @@ Client.connect('mongodb://localhost:27017/school', function (error, db) {
         console.log(error);
     } else {
         // 1. 수정 대상 쿼리
-        var query = { };
+        var query = {  };
         db.collection('qna').remove(query, function (err, removed) {
             if (err) {
                 console.log(err);
